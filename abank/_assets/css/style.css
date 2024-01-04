@@ -1,0 +1,701 @@
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box; /* Optional: Menghindari masalah padding/border memperbesar elemen */
+}
+
+/* Optional: Menangani beberapa elemen yang perlu mendapatkan gaya khusus */
+html {
+    font-size: 16px;
+}
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, ul, ol, li, table, tr, th, td, form, input, button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+/* Reset untuk ul, li, dan a */
+ul, ol, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Efek halaman */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+/* COLOR */
+:root {
+    --primary-color: #2ecc71; /* Warna utama hijau */
+    --primary-color-2: rgba(0, 255, 21, 0.1); /* Warna utama hijau */
+    --secondary-color: #27ae60; /* Warna hijau sekunder */
+    --accent-color: #3498db; /* Warna aksen, misalnya untuk tombol atau elemen yang menonjol */
+    --background-color: #ebe9e9; /* Warna latar belakang umum */
+    --light-text-color: #ebe9e9; /* Warna latar belakang umum */
+    --text-color: #333; /* Warna teks umum */
+    --link-color: #2980b9; /* Warna untuk tautan/hyperlink */
+    --success-color: #16a085; /* Warna untuk pesan keberhasilan atau indikator positif */
+    --error-color: #e74c3c; /* Warna untuk pesan kesalahan atau indikator negatif */
+    --warning-color: #ff4500; /* Warna untuk pesan kesalahan atau indikator negatif */
+}
+
+/* google icon */
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+}
+h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* SIDEBAR */
+aside {
+    position: fixed;
+    width: 90px;
+    height: 100%;
+    padding: 0 1rem;
+    color: var(--light-text-color);
+    overflow: hidden;
+    transition: all .5s linear;
+    background-image: url('../image/bg-sidebar.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-color: var(--primary-color);
+}
+aside::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 128, 0, 0.7), rgba(0, 128, 0, 0));
+}
+aside:hover {
+    width: 260px;
+}
+
+aside:hover ~ .container {
+    margin-left: 260px; /* Adjust sesuai dengan lebar aside yang tergantung dari hover */
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--light-text-color);
+    height: 80px;
+    padding: 16px;
+}
+.logo span {
+    z-index: 99;
+}
+.menu {
+    height: 88%;
+    position: relative;
+    padding: 0;
+    z-index: 99;
+}
+.menu li {
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: .3rem;
+    transition: all .5s ease-in-out;
+}
+.menu li:hover, .active {
+    background-color: var(--secondary-color);
+}
+.menu a {
+    color: var(--light-text-color);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.menu a .menu-item {
+    white-space: nowrap;
+    font-size: 1rem;
+    overflow: hidden;
+}
+.menu a .material-symbols-outlined {
+    font-size: 1.2rem;
+    margin-left: 2px;
+}
+.logout {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+}
+/* END SIDEBAR */
+
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Header dan Footer mengikuti konten, Main memenuhi sisanya */
+    height: 100vh;
+    gap: 1rem; /* Jarak antara ketiganya 1rem */
+    margin-left: 90px;
+    transition: all .5s linear;
+    background-color: var(--background-color);
+    width: 100%;
+    padding: 1rem;
+}
+header, main, footer {
+    padding: 1rem 2rem;
+}
+header, main, footer {
+    background-color: #fff;
+    border-radius: .3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+}
+header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.user-info .loket-info {
+    display: flex;
+    gap: .5rem;
+    margin-right: 1rem;
+    align-items: center;
+}
+.loket-info .success-text {
+    color: var(--primary-color);
+}
+.loket-info .warning-text {
+    color: var(--warning-color);
+}
+.loket-info .success-button {
+    background-color: var(--primary-color);
+    padding: .2rem .5rem;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+}
+.loket-info .warning-button {
+    background-color: var(--warning-color);
+    padding: .2rem .5rem;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+}
+header .user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #adadad;
+}
+
+.status-aktif {
+    /* Gaya untuk status loket 'aktif' */
+    color: var(--secondary-color);
+}
+
+.status-tutup {
+    /* Gaya untuk status loket 'tutup' */
+    color: var(--error-color);
+}
+/* End header */
+
+/* MAIN */
+/* Dashboard */
+.dashboard-section,
+.antrian-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dashboard-card {
+    flex: 1; /* Mengatur lebar kartu agar dinamis dan memanfaatkan ruang yang tersedia */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.dashboard-section .dashboard-card:hover {
+    transform: scale(1.02);
+}
+
+.data-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.data-card:first-child {
+width: calc(27% - 1rem);
+}
+.data-card:last-child {
+width: 73%;
+}
+
+.card-title,
+.data-title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.data-card .no-antrian {
+    font-size: 4rem;
+    font-weight: 600;
+}
+.antrian-details-container {
+    overflow-x: auto;
+}
+
+/* Filter tanggal*/
+.filter-date {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 1px solid var(--text-color);
+    border-radius: 6px;
+    padding: .5rem;
+    gap: 0 !important;
+}
+
+.filter-date label {
+    margin: 0 !important;
+}
+.filter-date input[type="date"] {
+    width: 135px;
+    margin: 0 1.5rem 0 .5rem;
+}
+.filter-date input[type="submit"] {
+    padding: 0 1rem;
+    border-radius: 2px;
+    background-color: var(--secondary-color);
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Data tabel dan form */
+.data-section,
+.form-section {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.data-info,
+.form-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.data-table {
+    overflow: auto; /* Menggunakan overflow auto untuk menampilkan scrollbar jika diperlukan */
+    width: 100%;
+    max-height: 300px; /* Atur tinggi maksimum yang sesuai dengan kebutuhan Anda */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+tbody {
+    font-size: .9rem;
+}
+
+th, td {
+    text-align: left;
+    width: 100%;
+}
+
+th {
+    padding: 16px 6px;
+    font-weight: 600;
+}
+td {
+    padding: 6px;
+    text-align: left;
+}
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.last-th,
+.fix-th,
+.last-td,
+.fix-td {
+    width: 45%;
+}
+.last-td .btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+.first-th,
+.first-td {
+    width: 15%;
+}
+
+
+tbody tr:nth-child(even) {
+    background-color: #dedede;
+}
+
+thead {
+    background-color: var(--secondary-color);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+tbody {
+    max-height: 300px; /* Atur tinggi maksimum yang sesuai dengan kebutuhan Anda */
+    overflow-y: auto; /* Munculkan scrollbar vertikal jika konten melebihi tinggi maksimum */
+}
+
+.status-selesai {
+    /* Gaya untuk status antrian 'selesai' */
+    background-color: rgba(0, 255, 0, 0.2);
+    padding: .1rem 1rem;
+    border-radius: 1rem;
+}
+
+.status-batal {
+    /* Gaya untuk status antrian 'batal' */
+    background-color: rgba(255, 0, 0, 0.2);
+    padding: .1rem 1rem;
+    border-radius: 1rem;
+}
+
+/* Scrollbar */
+/* Untuk browser berbasis WebKit */
+.data-table::-webkit-scrollbar {
+    width: 4px; /* Lebar scrollbar */
+}
+
+.data-table::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); /* Warna thumb (bagian yang dapat digerakkan) */
+}
+
+.data-table::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Warna track (bagian yang tidak dapat digerakkan) */
+}
+
+/* Untuk browser selain WebKit (Firefox dll.) */
+.data-table {
+    scrollbar-width: thin; /* Lebar scrollbar */
+}
+
+.data-table::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); /* Warna thumb (bagian yang dapat digerakkan) */
+}
+
+.data-table::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Warna track (bagian yang tidak dapat digerakkan) */
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"],
+input[type="date"],
+.form-radio,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--text-color);
+    border-radius: 6px;
+}
+
+input[type="file"] {
+    cursor: pointer;
+}
+
+select option[disabled] {
+    color: #888;
+}
+select option:checked {
+    background-color: #e0e0e0;
+}
+
+.form-radio {
+    display: flex;
+    gap: 1rem;
+    border: none;
+}
+.form-radio .form-group-radio {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+.form-group-radio label {
+    margin-bottom: 0;
+}
+
+/* Form backup db */
+.backup-form {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    height: 40px;
+}
+
+.backup-form label,
+.backup-form input[type="text"],
+.backup-form input[type="text"] {
+    margin: 0;
+}
+/* END MAIN */
+
+/* FOOTER */
+footer {
+    display: flex;
+    justify-content: right;
+}
+/* END FOOTER */
+
+/* MODAL */
+/* modal data */
+#modalDetailNasabah,
+#modalDetailKaryawan,
+#modalDetailAntrian {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 99;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* CSS Khusus untuk Modal Detail Karyawan */
+#modalDetailNasabah .modal-content,
+#modalDetailKaryawan .modal-content,
+#modalDetailAntrian .modal-content {
+    width: 60%;
+}
+
+#modalDetailNasabah h3,
+#modalDetailKaryawan h3 {
+    color: #000;
+}
+
+#modalDetailNasabah p,
+#modalDetailKaryawan p {
+    color: #666;
+}
+/* END MODAL */
+
+/* BUTTON */
+/* Tombol utama */
+.btn, .btn:link, .btn:visited {
+    display: inline-block;
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    color: var(--accent-color);
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+/* Tombol sekunder */
+.secondary-btn, .secondary-btn:link, .secondary-btn:visited {
+    display: inline-block;
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid var(--error-color);
+    border-radius: 5px;
+    color: var(--error-color);
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.secondary-btn:hover {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* Tombol sukses */
+.success-btn, .success-btn:link, .success-btn:visited {
+    display: inline-block;
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    color: var(--primary-color);
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.success-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Gaya untuk ikon */
+.material-symbols-outlined {
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+/* Gaya untuk tombol di formulir */
+.mt {
+    margin-top: 1.9rem;
+}
+
+/* Gaya grup tombol */
+.btn-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* button style */
+.button-right {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+/* END BUTTON */
+
+/* Media queries untuk tata letak responsif */
+@media (max-width: 767px) {
+    .dashboard-card {
+        flex-basis: calc(50% - 1rem); /* Pada layar kecil, kartu akan menampilkan dua kolom */
+    }
+    .data-card:first-child {
+        width: 100%;
+    }
+    .data-card:last-child {
+        width: 100%;
+    }
+    form {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-card {
+        flex-basis: 100%; /* Pada layar sangat kecil, kartu akan menampilkan satu kolom penuh */
+    }
+    .data-card:first-child {
+        width: 100%;
+    }
+    .data-card:last-child {
+        width: 100%;
+    }
+}

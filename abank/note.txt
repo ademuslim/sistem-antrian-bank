@@ -1,0 +1,6 @@
+perbaikan
+1. jika nomor antrian nasabah sama dengan yang sedang di proses di kotak informasi antrian berlangsung, maka buatkan kondisi nomor antrian anda sedang di proses atau di panggil
+
+2. perbaiki css (kurang terorganisir)
+
+3. perbaiki nama class html

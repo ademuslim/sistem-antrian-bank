@@ -1,0 +1,308 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:active {
+    text-decoration: none;
+}
+
+/* color */
+:root {
+    --primary-color: greenyellow; /* Warna utama hijau */
+    --secondary-color: #27ae60; /* Warna hijau sekunder */
+    --accent-color: #3498db; /* Warna aksen, misalnya untuk tombol atau elemen yang menonjol */
+    --background-color: #ebe9e9; /* Warna latar belakang umum */
+    --text-color: #333; /* Warna teks umum */
+    --link-color: #2980b9; /* Warna untuk tautan/hyperlink */
+    --success-color: #16a085; /* Warna untuk pesan keberhasilan atau indikator positif */
+    --error-color: #c0392b; /* Warna untuk pesan kesalahan atau indikator negatif */
+}
+
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Poppins", sans-serif;
+    background-image: url('../image/bg-login.jpg'); /* Ganti dengan path sesuai lokasi gambar Anda */
+    background-size: cover; /* Atur ukuran gambar agar selalu menutupi seluruh elemen */
+    background-position: center; /* Pusatkan gambar di tengah elemen */
+    background-repeat: no-repeat; /* Hindari pengulangan gambar jika ukuran elemen lebih besar dari gambar */
+}
+header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    color: #fff;
+}
+.brand {
+    font-size: 1.4rem;
+}
+.bank-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+.brand span,
+.bank-name {
+    color: var(--primary-color);
+}
+.bank-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.bank-address {
+    font-size: .8rem;
+}
+
+main {
+    width: 100%;
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+    color: #fff;
+}
+.tagline span {
+    color: var(--primary-color);
+}
+.tagline p:nth-child(1),
+.tagline p:nth-child(2) {
+    font-size: 3rem;
+    font-weight: bold;
+}
+.tagline p:last-child {
+    font-size: 1rem;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: .8rem;
+    margin-top: 2rem;
+    height: 55vh;
+    border-radius: 6px;
+}
+.form-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    height: 100%;
+    margin-right: 2rem;
+}
+.form-login form {
+    display: flex;
+    flex-direction: column;
+}
+.form-login input[type="text"],
+.form-login input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 1rem;
+}
+.form-login input[type="submit"] {
+    width: 30%;
+    padding: 8px;
+    margin-top: 1rem;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    display: block;
+    margin-left: auto; /* Meletakkan tombol submit ke kanan */
+}
+
+.form-login .help {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: orangered;
+    padding: .8rem;
+    text-align: center;
+
+}
+.help .button-help {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+}
+.button-help button {
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+.antrian-info {
+    display: flex;
+    width: 70%;
+    gap: .8rem;
+    justify-content: space-between;
+}
+.antrian-info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 6px;
+    width: 20%;
+}
+.antrian-info-item .number {
+    font-size: 9rem;
+}
+.antrian-info-item .loket-name {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* modal */
+.modalRegistrasi,
+.modalBantuan {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+.modalRegistrasi .modal-content,
+.modalBantuan .modal-content {
+    /* Gaya untuk konten modal */
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px; 
+    width: 50vw; /* Sesuaikan lebar maksimum sesuai kebutuhan */
+    margin: auto; /* Menengahkan modal secara horizontal */
+}
+.registration-form {
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+    justify-content: space-between;
+}
+.registration-form .form-group {
+    width: 100%;
+    position: relative;
+}
+
+.form-group-radio {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.form-group-radio input[type="radio"] {
+    display: none; /* Sembunyikan radio button bawaan */
+}
+
+.form-group-radio label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.form-group-radio label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px; /* Sesuaikan dengan kebutuhan desain */
+    height: 20px; /* Sesuaikan dengan kebutuhan desain */
+    border: 2px solid #000; /* Sesuaikan dengan kebutuhan desain */
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.form-group-radio input[type="radio"]:checked + label:before {
+    background-color: #4CAF50; /* Warna latar belakang ketika terpilih */
+    border-color: #4CAF50; /* Warna border ketika terpilih */
+}
+
+.modalRegistrasi .modal-content label {
+    /* Gaya untuk label pada formulir */
+    display: block;
+    margin-bottom: 2px;
+}
+
+.modalRegistrasi .modal-content input {
+    /* Gaya untuk input pada formulir */
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.modalRegistrasi .modal-content input[type="submit"] {
+    width: 50%;
+    padding: 8px;
+    margin-top: 2rem;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    display: block;
+    margin-left: auto; /* Meletakkan tombol submit ke kanan */
+}
+
+.modalRegistrasi .modal-content input[type="submit"]:hover {
+    /* Gaya hover untuk tombol submit */
+    background-color: #45a049;
+}
+.modal-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.closeModalRegistrasi,
+.closeModalBantuan {
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.content-bantuan-group {
+    margin-bottom: 1.5rem;
+}
+.content-bantuan-group p:first-child {
+    font-weight: bold;
+}
+/* Gaya tambahan untuk membantu tata letak dan responsivitas */
+
+@media (max-width: 600px) {
+    .modal-content {
+        max-width: 100%;
+    }
+}
+
